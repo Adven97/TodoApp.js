@@ -23,9 +23,14 @@ class TodoApp {
             newTask.appendChild(spanEl);
             newTask.appendChild(labelEl);
 
-
             taskList.appendChild(newTask);
         }
+    }
+
+    removeLast() {
+        const liEl = document.querySelectorAll('li');
+        const elementToRemove = liEl[liEl.length-1];
+        elementToRemove.remove();
     }
 
     getChecked2() {
@@ -45,60 +50,20 @@ class TodoApp {
 
         }
     }
-
-
-
-
 }
 
 
-// function getChecked2(){
-//     const liEl = document.querySelectorAll('li');
-//     const checkBoxes = document.querySelectorAll('.check');
-
-//     for(let i=0; i<liEl.length; i++){
-//         checkBoxes[i].addEventListener('change', function () {
-//             if (checkBoxes[i].checked) {
-//                 liEl[i].setAttribute("class", "list-group-item active");
-//                 console.log('checked! ' + this);
-//             } else {
-//                 liEl[i].setAttribute("class", "list-group-item");
-//                 console.log('unchecked!');
-//             }
-//         });
-
-//     }
-// }
-
-//  function getChecked() {
-
-            
-//                 const checkBoxes = document.querySelectorAll('.check');
-//                 checkBoxes.forEach(function(checkBox){
-//                     const liEl = document.querySelectorAll('li');
-//                     liEl.forEach(function (li) {
-//                     checkBox.addEventListener('change', function () {
-//                         if (checkBox.checked) {
-//                             li.setAttribute("class", "list-group-item active");
-//                             console.log('checked! ' + this);
-//                         } else {
-//                             li.setAttribute("class", "list-group-item");
-//                             console.log('unchecked!');
-//                         }
-//                     });
-//                 }
-//                     );
-                
-//             });
-            
-
-//     }
-
 tdap = new TodoApp(true);
 tdap.getChecked2();
-const butt = document.querySelector('.btn-info');
+
+const butt = document.querySelector('#add');
 butt.addEventListener('click', () => {
     tdap.addNewTask();
     tdap.getChecked2();
     
+});
+const butt2 = document.querySelector('#rmv');
+butt2.addEventListener('click', () => {
+    tdap.removeLast();
+
 });
